@@ -10,7 +10,7 @@ function imap(shortcut, command)
   map('i', shortcut, command)
 end
 
-nmap('<space>h', '<cmd>noh<cr>')
+nmap('<leader>h', '<cmd>noh<cr>')
 
 -- Telescope
 nmap('<leader>ff', '<cmd>Telescope find_files<cr>')
@@ -28,7 +28,7 @@ nmap('<C-e>', '<cmd>NERDTreeToggle<CR>')
 
 -- Test
 vim.api.nvim_create_user_command(
-    'Notes', 
+    'Notes',
     function()
         local commands = require("commands")
         commands.notes()
@@ -37,7 +37,7 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command(
-    'PathClip', 
+    'PathClip',
     'let @+ = expand("%:p")',
     { nargs = 0 }
 )
