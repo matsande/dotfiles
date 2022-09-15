@@ -105,9 +105,9 @@ lspconfig['gopls'].setup{
     on_attach = on_attach,
 }
 
-lspconfig['csharp_ls'].setup{
-    on_attach = on_attach,
-}
+--lspconfig['csharp_ls'].setup{
+--    on_attach = on_attach,
+--}
 
 -- omnisharp lsp config
 lspconfig['omnisharp'].setup {
@@ -136,7 +136,7 @@ toggleterm.setup {
 
 nvim_treesitter_config.setup({
   -- A list of parser names, or 'all'
-  ensure_installed = { 'c', 'lua', 'rust', 'go', 'c_sharp' },
+  ensure_installed = { 'c', 'lua', 'rust', 'go', 'c_sharp', 'markdown' },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

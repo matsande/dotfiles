@@ -13,7 +13,7 @@ return require('packer').startup(function()
     use 'nvim-lualine/lualine.nvim'
 
     -- File browser
-    use 'preservim/nerdtree' 
+    use 'preservim/nerdtree'
     use 'ryanoasis/vim-devicons'
 
     -- File search
@@ -33,14 +33,16 @@ return require('packer').startup(function()
     -- Terminal
     use { 'akinsho/toggleterm.nvim', tag = '*' }
 
-    -- GO 
+    -- GO
     use 'ray-x/go.nvim'
 
     use 'nvim-treesitter/nvim-treesitter'
+
+    use 'tpope/vim-markdown'
 end)
 
 
--- Take a look at https://github.com/arnvald/viml-to-lua/blob/main/lua/plugins.lua 
+-- Take a look at https://github.com/arnvald/viml-to-lua/blob/main/lua/plugins.lua
 --
 -- GO:
 -- https://github.com/ray-x/go.nvim
