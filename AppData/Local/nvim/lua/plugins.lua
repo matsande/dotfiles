@@ -29,6 +29,8 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-nvim-lsp' -- LSP autocompletion provider
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
+    use 'j-hui/fidget.nvim' -- LSP loading progress
+
 
     -- Terminal
     use { 'akinsho/toggleterm.nvim', tag = '*' }

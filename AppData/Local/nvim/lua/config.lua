@@ -7,6 +7,7 @@ local lspconfig = require('lspconfig')
 local toggleterm = require('toggleterm')
 local nvim_treesitter_config = require('nvim-treesitter.configs')
 local telescope = require('telescope')
+local fidget = require('fidget')
 
 -- lualine setup
 lualine.setup({
@@ -179,3 +180,5 @@ telescope.setup({
 })
 
 telescope.load_extension('ui-select')
+
+fidget.setup()
