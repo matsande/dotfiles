@@ -39,5 +39,9 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "editor.fontFamily": "BlexMono NFM",
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    }
 }
