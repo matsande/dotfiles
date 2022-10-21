@@ -3,8 +3,8 @@ $global:gitAvailableBranches = @()
 
 function Get-AvailableBranches {
     try {
-        
-        (git branch -a 2>$null) | 
+
+        (git branch -a 2>$null) |
         ForEach-Object { $_.Trim('*', ' ').Replace('remotes/', '') } |
         Where-Object { !$_.Contains('origin/HEAD') }
     }
@@ -20,6 +20,16 @@ function Get-CurrentBranch {
     }
     catch {
         return ""
+    }
+}
+
+function Get-RepoDirtyFlag {
+    try {
+        $dirty = (git diff --quiet --ignore-submodules HEAD)
+        return $dirty -ne 0
+    }
+    catch {
+        return false
     }
 }
 
@@ -49,7 +59,7 @@ function InitializeArgumentCompleter {
         $matches = @()
         $matches += $items |
         Where-Object { $_ -like "$wordToComplete*" } |
-        Sort-Object 
+        Sort-Object
 
         $fuzzyMatches = @()
         $fuzzyMatches += $items |

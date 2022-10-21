@@ -16,6 +16,7 @@ function prompt {
 
     $arrowChar = [char]0xE0B0
     $branchChar = [char]0xE725
+    $exclamChar = [char]0xF12A
     $timeFg = [ConsoleColor]::Black
     $timeBg = [ConsoleColor]::DarkBlue
 
@@ -55,7 +56,14 @@ function prompt {
         Write-Host $currentBranch -BackgroundColor $branchBg -ForegroundColor $branchFg -NoNewline
         Write-Host " " -NoNewline -BackgroundColor $branchBg
         Write-Host $arrowChar -ForegroundColor $branchBg -NoNewline
-    } else {
+
+        # Not used, too slow on windows for large repos
+        # $repoDirty = Get-RepoDirtyFlag
+        # if ($repoDirty) {
+        #     Write-Host "dirty"
+        # }
+    }
+    else {
         Write-Host $arrowChar -ForegroundColor $locationBg -NoNewline
     }
 
@@ -77,9 +85,21 @@ function prompt {
 
     $global:LASTEXITCODE = $realLASTEXITCODE
 
+    if ($realLASTEXITCODE -ne 0) {
+        $message = $exclamChar + " $realLASTEXITCODE " + $exclamChar
+        $startposx = $Host.UI.RawUI.windowsize.width - $message.length
+        $startposy = $Host.UI.RawUI.CursorPosition.Y
+        $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $startposx, $startposy
+        $oldColor = $Host.UI.RawUI.ForegroundColor
+        $Host.UI.RawUI.ForegroundColor = "DarkRed"
+        $Host.UI.Write($message)
+        $Host.UI.RawUI.ForegroundColor = $oldColor
+    }
+
     Write-Host ""
 
-    return "> "
+    # return "> "
+    return ([char]0xEAD3) + " "
 }
 
 Import-Module z
