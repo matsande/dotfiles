@@ -37,8 +37,14 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_user_command(
-    'PathClip',
+    'CopyPath',
     'let @+ = expand("%:p")',
+    { nargs = 0 }
+)
+
+vim.api.nvim_create_user_command(
+    'CopyName',
+    'let @+ = expand("%")',
     { nargs = 0 }
 )
 
