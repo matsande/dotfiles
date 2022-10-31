@@ -8,11 +8,11 @@
 $gitUtilsPath = $PSScriptRoot + '\GitUtils.ps1'
 .$gitUtilsPath
 
-RefreshAvailableBranches
-InitializeArgumentCompleter
-
 function prompt {
     $realLASTEXITCODE = $LASTEXITCODE
+
+    RefreshAvailableBranches
+    InitializeArgumentCompleter
 
     $arrowChar = [char]0xE0B0
     $branchChar = [char]0xE725
@@ -62,6 +62,11 @@ function prompt {
         # if ($repoDirty) {
         #     Write-Host "dirty"
         # }
+
+        $cherry = (git cherry -v)
+        if ($cherry.Length -ne 0) {
+            Write-Host " $exclamChar" -NoNewline -ForegroundColor Yellow
+        }
     }
     else {
         Write-Host $arrowChar -ForegroundColor $locationBg -NoNewline
@@ -85,7 +90,7 @@ function prompt {
 
     $global:LASTEXITCODE = $realLASTEXITCODE
 
-    if ($realLASTEXITCODE -ne 0) {
+    if ($realLASTEXITCODE -ne 0 -and $null -ne $realLASTEXITCODE) {
         $message = $exclamChar + " $realLASTEXITCODE " + $exclamChar
         $startposx = $Host.UI.RawUI.windowsize.width - $message.length
         $startposy = $Host.UI.RawUI.CursorPosition.Y

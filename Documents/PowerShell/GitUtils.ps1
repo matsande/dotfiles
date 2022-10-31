@@ -56,8 +56,8 @@ function InitializeArgumentCompleter {
         $items = $global:gitAvailableBranches
 
         # Write-Host "Running completer for" $wordToComplete $items.Length
-        $matches = @()
-        $matches += $items |
+        $branch_matches = @()
+        $branch_matches += $items |
         Where-Object { $_ -like "$wordToComplete*" } |
         Sort-Object
 
@@ -66,7 +66,7 @@ function InitializeArgumentCompleter {
         Where-Object { $_ -like "*$wordToComplete*" } |
         Sort-Object
 
-        $m = $matches + $fuzzyMatches | Select-Object -Unique
+        $m = $branch_matches + $fuzzyMatches | Select-Object -Unique
 
         if ($isCheckout) {
             # Filter out all 'origin/' - since during a checkout we most likely want a local branch
