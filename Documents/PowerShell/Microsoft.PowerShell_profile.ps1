@@ -3,6 +3,7 @@
 #     $user = [Security.Principal.WindowsIdentity]::GetCurrent();
 #     (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 # }
+#
 
 # Load GitUtils
 $gitUtilsPath = $PSScriptRoot + '\GitUtils.ps1'
@@ -103,12 +104,28 @@ function prompt {
 
     Write-Host ""
 
+    $Host.UI.RawUI.WindowTitle = (Get-Item .).Name
+    $devenv = (Get-Command devenv)
+    if ($devenv) {
+        # VS icon
+        return ([char]0xE70C) + " "
+    } else {
+        return ([char]0xEAD3) + " "
+    }
+
     # return "> "
-    return ([char]0xEAD3) + " "
 }
 
-Import-Module z
+#Import-Module z
 Import-Module -Name Terminal-Icons
+Set-PSReadLineOption -PredictionSource None
+
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --hook $hook powershell | Out-String)
+})
+
+#Set-PSReadLineKeyHandler -Key Tab -Function Complete
 
 # Chocolatey profile
 # $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"

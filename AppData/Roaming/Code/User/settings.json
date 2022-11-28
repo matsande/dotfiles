@@ -39,9 +39,11 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "window.zoomLevel": 1,
     "editor.fontFamily": "BlexMono NFM",
     "[css]": {
         "editor.defaultFormatter": "vscode.css-language-features"
-    }
+    },
+    "emmet.showExpandedAbbreviation": "never",
+    "emmet.showAbbreviationSuggestions": false,
+    "window.zoomLevel": 1
 }
