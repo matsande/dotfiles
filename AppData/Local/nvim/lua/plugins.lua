@@ -7,49 +7,12 @@ return require('packer').startup(function()
     use "olimorris/onedarkpro.nvim"
 
     -- Infoline
-    -- use 'vim-airline/vim-airline'
-    -- use 'vim-airline/vim-airline-themes'
-    -- superseded by:
     use 'nvim-lualine/lualine.nvim'
-
-    -- File browser
-    use 'preservim/nerdtree'
-    use 'ryanoasis/vim-devicons'
-
-    -- File search
-    use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
-    use {'nvim-telescope/telescope-ui-select.nvim' }
 
     -- Editor config
     use 'gpanders/editorconfig.nvim'
-
-    -- General dev
-    use 'neovim/nvim-lspconfig' -- native LSP support
-    use 'hrsh7th/nvim-cmp' -- autocompletion framework
-    use 'hrsh7th/cmp-nvim-lsp' -- LSP autocompletion provider
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
-    use 'j-hui/fidget.nvim' -- LSP loading progress
-
-
-    -- Terminal
-    use { 'akinsho/toggleterm.nvim', tag = '*' }
-
-    -- GO
-    use 'ray-x/go.nvim'
-
-	-- Temp removed, cannot get this to build on Win11 currently
-    -- use 'nvim-treesitter/nvim-treesitter'
-
-    use 'tpope/vim-markdown'
 end)
 
-
--- Take a look at https://github.com/arnvald/viml-to-lua/blob/main/lua/plugins.lua
---
--- GO:
--- https://github.com/ray-x/go.nvim
---
 -- PreReqs:
 -- git
 -- git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"

@@ -24,18 +24,6 @@ nmap('<C-l>', '<cmd>bnext<cr>')
 imap('jj', '<Esc>')
 nmap('<C-e>', '<cmd>NERDTreeToggle<CR>')
 
--- See config.lua for LSP mappings
-
--- Test
-vim.api.nvim_create_user_command(
-    'Notes',
-    function()
-        local commands = require("commands")
-        commands.notes()
-    end,
-    { nargs = 0 }
-)
-
 vim.api.nvim_create_user_command(
     'CopyPath',
     'let @+ = expand("%:p")',
