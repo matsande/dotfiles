@@ -45,5 +45,13 @@
     },
     "emmet.showExpandedAbbreviation": "never",
     "emmet.showAbbreviationSuggestions": false,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "editor.accessibilitySupport": "off",
+    "[proto3]": {
+        "editor.defaultFormatter": "zxh404.vscode-proto3"
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "[python]": {
+        "editor.formatOnType": true
+    }
 }

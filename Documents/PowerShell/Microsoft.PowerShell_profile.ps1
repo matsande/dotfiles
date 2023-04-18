@@ -104,7 +104,10 @@ function prompt {
 
     Write-Host ""
 
-    $Host.UI.RawUI.WindowTitle = (Get-Item .).Name
+    if ($profile_title -eq "") {
+        $Host.UI.RawUI.WindowTitle = (Get-Item .).Name
+    }
+
     $devenv = (Get-Command devenv)
     if ($devenv) {
         # VS icon
@@ -124,6 +127,12 @@ Invoke-Expression (& {
     $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
     (zoxide init --hook $hook powershell | Out-String)
 })
+
+function Set-Title {
+    param([string]$t)
+    $Host.UI.RawUI.WindowTitle = $t
+    Set-Variable -Name "profile_title" -Scope global -Value $t
+}
 
 #Set-PSReadLineKeyHandler -Key Tab -Function Complete
 

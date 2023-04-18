@@ -12,7 +12,7 @@ vim.cmd([[
     :set mouse=a
 ]])
 
-vim.cmd('colorscheme onedarkpro')
+vim.cmd('colorscheme onedark_vivid')
 
 vim.cmd('language en_US')
 

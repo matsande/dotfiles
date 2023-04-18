@@ -38,7 +38,8 @@ return require('packer').startup(function()
     -- GO
     use 'ray-x/go.nvim'
 
-    use 'nvim-treesitter/nvim-treesitter'
+	-- Temp removed, cannot get this to build on Win11 currently
+    -- use 'nvim-treesitter/nvim-treesitter'
 
     use 'tpope/vim-markdown'
 end)

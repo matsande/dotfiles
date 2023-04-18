@@ -5,7 +5,7 @@ local go = require('go')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local lspconfig = require('lspconfig')
 local toggleterm = require('toggleterm')
-local nvim_treesitter_config = require('nvim-treesitter.configs')
+--local nvim_treesitter_config = require('nvim-treesitter.configs')
 local telescope = require('telescope')
 local fidget = require('fidget')
 
@@ -99,7 +99,7 @@ local on_attach = function(client, bufnr)
 
 end
 
-local capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Note: For additional languages, see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 lspconfig['gopls'].setup{
@@ -135,6 +135,7 @@ toggleterm.setup {
     open_mapping = [[<C-\>]],
 }
 
+--[[
 nvim_treesitter_config.setup({
   -- A list of parser names, or 'all'
   ensure_installed = { 'c', 'lua', 'rust', 'go', 'c_sharp' },
@@ -159,7 +160,7 @@ nvim_treesitter_config.setup({
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = { 'markdown' }, 
+    disable = { 'markdown' },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -168,6 +169,7 @@ nvim_treesitter_config.setup({
     additional_vim_regex_highlighting = false,
   },
 })
+]]--
 
 telescope.setup({
   extensions = {
